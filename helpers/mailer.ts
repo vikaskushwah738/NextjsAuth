@@ -3,8 +3,8 @@ import nodemailer from "nodemailer";
 import bcryptjs from 'bcryptjs'
 export const sendEmail = async ({ email, emailType, userId }: any) => {
   try {
-    const hashedToken = await bcryptjs.hash(userId.toSting(), 10);
-
+    const hashedToken = await bcryptjs.hash(userId.toString(), 10);
+    
     if (emailType === "VERIFY") {
       await User.findByIdAndUpdate(userId,
         {
@@ -37,11 +37,10 @@ export const sendEmail = async ({ email, emailType, userId }: any) => {
          </br>${process.env.DMAOIN}/verifyemail?token=${hashedToken}
        </p>`, // html body
     };
-
-    const mailResponse = await transporter.sendMail
-      (mailOptions)
+    const mailResponse = await transporter.sendMail(mailOptions); 
+    
     return mailResponse
   } catch (error: any) {
-    throw new Error(error.massage)
+    throw new Error(error.message)
   }
 }
