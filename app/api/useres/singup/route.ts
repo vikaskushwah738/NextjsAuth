@@ -8,7 +8,7 @@ connect()
 
 export async function POST(request :NextRequest) {
     try{
-       const reqBody= request.json()
+       const reqBody=await request.json()
        const {username, email, password}= reqBody
        // validation
        console.log(reqBody);
@@ -34,6 +34,11 @@ export async function POST(request :NextRequest) {
        //send verification email
          await sendEmail({email, emailType:"VERIFY", userID:saveUser.id})
 
+         return NextResponse.json({
+            message: "User Registered successfully",
+            success:true,
+            saveUser
+         })
     } catch(error:any){
         return NextResponse.json({error: error.massage},
         {status :500})
