@@ -44,7 +44,6 @@ const Singup = () => {
      value={user.username}
      placeholder="username"
      onChange={(e) => setUser({...user, username: e.target.value })} />
-     
      <label htmlFor="email">E-mail</label>
      <input
      className="p-2 rounded-lg border-gray-300 border mb-4 text-black
@@ -53,7 +52,6 @@ const Singup = () => {
      value={user.email}
      placeholder="email"
      onChange={(e) => setUser({...user, email: e.target.value })} />
-     
      <label htmlFor="password">Password</label>
      <input
      className=" p-2 rounded-lg border-gray-300 border mb-4 text-black
@@ -71,5 +69,4 @@ const Singup = () => {
     </div>
   )
 }
-
 export default Singup
